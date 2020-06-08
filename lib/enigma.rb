@@ -27,4 +27,14 @@ class Enigma
       @date = DateCode.new(date)
     end
   end
+
+  def shift(key, date)
+    offsets = key.shift_keys.zip(date.offsets).map(&:sum)
+    shift = Hash.new
+    shift[:A] = offsets[0]
+    shift[:B] = offsets[1]
+    shift[:C] = offsets[2]
+    shift[:D] = offsets[3]
+    shift
+  end
 end
