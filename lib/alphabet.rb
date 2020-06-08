@@ -16,4 +16,12 @@ class Alphabet
       @character.ord
     end
   end
+
+  def shift(amount)
+    if amount.to_i > 27
+      amount.to_i % 27
+    else
+      amount.to_i
+    end
+  end
 end
