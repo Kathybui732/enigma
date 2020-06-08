@@ -81,4 +81,9 @@ class EnigmaTest < MiniTest::Test
 		@enigma.stubs(:shift).returns({:A=>6, :B=>31, :C=>71, :D=>15})
 		assert_equal expected, @enigma.decrypt(encrypted[:encryption], "02715")
 	end
+
+	def test_crack
+		@enigma.encrypt("hello world end", "08304", "291018")
+		@enigma.crack("vjqtbeaweqihssi", "291018")
+	end
 end

@@ -61,4 +61,43 @@ class Enigma
       date: @date.code
     }
   end
+
+  def crack(message, date)
+    rotation = message.size % 4
+    last_4 = message.chars.pop(4)
+    last_4 = last_4.map do |letter|
+      Alphabet.new(letter)
+    end
+    end_lineup = last_4.map do |alphabet|
+      alphabet.position
+    end
+    end_positions = [123, 101, 110, 100]
+    @date = date_object(date)
+    offsets = @date.offsets.rotate(rotation)
+    potential_keys = [
+      [end_lineup[0] - end_positions[0] - offsets[0]],
+      [end_lineup[1] - end_positions[1] - offsets[1]],
+      [end_lineup[2] - end_positions[2] - offsets[2]],
+      [end_lineup[3] - end_positions[3] - offsets[3]]
+    ]
+    all_keys = potential_keys.flatten.rotate(-3).map do |key|
+      [key.to_s.rjust(2, "0"), (key+27).to_s.rjust(2, "0"), (key+54).to_s.rjust(2, "0"), (key+81).to_s.rjust(2, "0"), (key+108).to_s.rjust(2, "0")]
+    end
+    a_key = all_keys[0].find do |key|
+      all_keys[1].any? do |element|
+        key[1] == element[0]
+      end
+    end
+    b_key = all_keys[1].find do |key|
+      all_keys[2].any? do |element|
+        key[1] == element[0]
+      end
+    end
+    c_key = all_keys[2].select do |key|
+      all_keys[3].any? do |element|
+        key[1] == element[0]
+      end
+    end
+    require "pry"; binding.pry
+  end
 end
