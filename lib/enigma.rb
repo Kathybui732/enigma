@@ -1,3 +1,5 @@
+require "date"
+
 class Enigma
   attr_reader :key,
               :date
@@ -20,7 +22,7 @@ class Enigma
 
   def date_object(date)
     if date.nil?
-      @date = DateCode.new(Date.today.strftime("%d%m%y"))
+      @date = DateCode.new
     elsif date.is_a?(DateCode)
       @date = date
     else
