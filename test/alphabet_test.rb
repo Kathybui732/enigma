@@ -40,4 +40,14 @@ class AlphabetTest < MiniTest::Test
     assert_equal 5, @punctuation.shift("32")
     assert_equal 26, @capitalize.shift("26")
   end
+
+  def test_it_can_encrypt
+    assert_equal "b", @alphabet.encrypt("18")
+    assert_equal "b", @space.encrypt("2")
+    assert_equal "!", @punctuation.encrypt("!")
+    assert_equal "b", @capitalize.encrypt("18")
+    assert_equal " ", @alphabet.encrypt("16")
+    assert_equal " ", @alphabet.encrypt("97")
+    assert_equal "p", @alphabet.encrypt("5")
+  end
 end
