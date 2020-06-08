@@ -22,4 +22,8 @@ class MessageTest < Minitest::Test
 		assert_equal 4, @message.breakdown.count
 	end
 
+  def test_it_can_encrypt
+    expected = "keder,sprrdx!"
+    assert_equal expected, @message.encrypt({ A: 03, B: 27, C: 73, D: 20 })
+  end
 end
