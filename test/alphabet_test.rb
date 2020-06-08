@@ -50,4 +50,14 @@ class AlphabetTest < MiniTest::Test
     assert_equal " ", @alphabet.encrypt("97")
     assert_equal "p", @alphabet.encrypt("5")
   end
+
+  def test_it_can_decrypt
+    assert_equal "t", @alphabet.decrypt("18")
+    assert_equal "y", @space.decrypt("2")
+    assert_equal "!", @punctuation.decrypt("!")
+    assert_equal "t", @capitalize.decrypt("18")
+    assert_equal " ", @alphabet.decrypt("11")
+    assert_equal " ", @alphabet.decrypt("92")
+    assert_equal "f", @alphabet.decrypt("5")
+  end
 end
