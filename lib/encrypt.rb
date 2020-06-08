@@ -3,6 +3,7 @@ require "./lib/key"
 require "./lib/date"
 require "./lib/alphabet"
 require "./lib/message"
+require "date"
 
 handle = File.open(ARGV[0], "r")
 
