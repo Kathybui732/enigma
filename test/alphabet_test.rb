@@ -26,4 +26,11 @@ class AlphabetTest < MiniTest::Test
     assert_equal false, @punctuation.valid_alphabet.include?(@punctuation.character)
     assert_equal true, @capitalize.valid_alphabet.include?(@capitalize.character)
   end
+
+  def test_it_can_get_position
+    assert_equal 107, @alphabet.position
+    assert_equal 123, @space.position
+    assert_equal 33, @punctuation.position
+    assert_equal 107, @capitalize.position
+  end
 end
