@@ -37,4 +37,15 @@ class Enigma
     shift[:D] = offsets[3]
     shift
   end
+
+  def encrypt(message, key=nil, date= nil)
+    message = Message.new(message)
+    @key = key_object(key)
+    @date = date_object(date)
+    {
+      encryption: message.encrypt(shift(@key, @date)),
+      key: @key.code,
+      date: @date.code
+    }
+  end
 end
