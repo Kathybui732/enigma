@@ -17,4 +17,16 @@ class Message
       end
     end
   end
+
+  def encrypt(shift)
+    encrypted_breakdown = []
+    breakdown.each do |array|
+      a = array[0].encrypt(shift[:A]) unless array[0].nil?
+      b = array[1].encrypt(shift[:B]) unless array[1].nil?
+      c = array[2].encrypt(shift[:C]) unless array[2].nil?
+      d = array[3].encrypt(shift[:D]) unless array[3].nil?
+      encrypted_breakdown << [a, b, c, d].compact
+    end
+    encrypted_breakdown.flatten.join
+  end
 end
