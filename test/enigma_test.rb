@@ -31,52 +31,52 @@ class EnigmaTest < MiniTest::Test
 
   def test_it_can_encrypt_message_with_a_key_and_date
 		expected = {
-	    encryption: "keder ohulw",
-	    key: "02715",
-	    date: "040895"
-	  }
-		assert_equal expected, @enigma.encrypt("Hello world", "02715", "040895")
+      :encryption=>"keder,sprrdx!",
+      :key=>"02715",
+      :date=>"040895"
+    }
+		assert_equal expected, @enigma.encrypt("Hello, world!", "02715", "040895")
 	end
 
 	def test_it_can_encrypt_with_todays_date
 		expected = {
-			:encryption=>"nib udmcxpu",
-			:key=>"02715",
-			:date=>"070620"
-		}
+      :encryption=>"nib u,qkuvbs!",
+      :key=>"02715",
+      :date=>"070620"
+    }
 		@enigma.stubs(:date_object).returns(DateCode.new("070620"))
 		@enigma.stubs(:shift).returns({:A=>6, :B=>31, :C=>71, :D=>15})
-		assert_equal expected, @enigma.encrypt("hello world", "02715")
+		assert_equal expected, @enigma.encrypt("hello, world!", "02715")
 	end
 
   def test_it_can_encrypt_with_no_key_or_date
     expected = {
-      :encryption=>"nib udmcxpu",
+      :encryption=>"nib u,qkuvbs!",
       :key=>"02741",
       :date=>"070620"
     }
     @enigma.stubs(:date_object).returns(DateCode.new("070620"))
     @enigma.stubs(:shift).returns({:A=>6, :B=>31, :C=>71, :D=>15})
     @enigma.stubs(:key_object).returns(Key.new("02741"))
-    assert_equal expected, @enigma.encrypt("hello world")
+    assert_equal expected, @enigma.encrypt("hello, world!")
   end
 
 	def test_it_can_decrypt_message_with_a_key_and_date
 		expected = {
-	    decryption: "hello world",
-	    key: "02715",
-	    date: "040895"
-	  }
-		assert_equal expected, @enigma.decrypt("keder ohulw", "02715", "040895")
+      :decryption=>"hello,hveutc!",
+      :key=>"02715",
+      :date=>"040895"
+    }
+		assert_equal expected, @enigma.decrypt("keder, ohulw!", "02715", "040895")
 	end
 
 	def test_it_can_decrypt_with_todays_date
-		encrypted = @enigma.encrypt("hello world", "02715")
+		encrypted = @enigma.encrypt("hello, world!", "02715")
 		expected = {
-			:decryption=>"hello world",
-			:key=>"02715",
-			:date=>"070620"
-		}
+      :decryption=>"hello, world!",
+      :key=>"02715",
+      :date=>"070620"
+    }
 		@enigma.stubs(:date_object).returns(DateCode.new("070620"))
 		@enigma.stubs(:shift).returns({:A=>6, :B=>31, :C=>71, :D=>15})
 		assert_equal expected, @enigma.decrypt(encrypted[:encryption], "02715")
