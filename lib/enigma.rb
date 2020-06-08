@@ -48,4 +48,16 @@ class Enigma
       date: @date.code
     }
   end
+
+  def decrypt(message, key=nil, date=nil)
+    message = Message.new(message)
+    key
+    @key = key_object(key)
+    @date = date_object(date)
+    {
+      decryption: message.decrypt(shift(@key, @date)),
+      key: @key.code,
+      date: @date.code
+    }
+  end
 end
