@@ -23,4 +23,9 @@ class EnigmaTest < MiniTest::Test
     assert_instance_of DateCode, @enigma.date_object(nil)
     assert_instance_of DateCode, @enigma.date_object(DateCode.new("040895"))
   end
+
+  def test_it_can_create_a_shift
+    expected = ({ :A=>3, :B=>27, :C=>73, :D=>20 })
+    assert_equal expected, @enigma.shift(@key, @date)
+  end
 end
