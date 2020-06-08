@@ -17,4 +17,10 @@ class EnigmaTest < MiniTest::Test
     assert_instance_of Key, @enigma.key_object(nil)
     assert_instance_of Key, @enigma.key_object(Key.new("02715"))
   end
+
+  def test_it_can_get_a_date_object
+    assert_instance_of DateCode, @enigma.date_object("040895")
+    assert_instance_of DateCode, @enigma.date_object(nil)
+    assert_instance_of DateCode, @enigma.date_object(DateCode.new("040895"))
+  end
 end
