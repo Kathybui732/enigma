@@ -17,4 +17,14 @@ class Enigma
       @key = Key.new(key)
     end
   end
+
+  def date_object(date)
+    if date.nil?
+      @date = DateCode.new(Date.today.strftime("%d%m%y"))
+    elsif date.is_a?(DateCode)
+      @date = date
+    else
+      @date = DateCode.new(date)
+    end
+  end
 end
