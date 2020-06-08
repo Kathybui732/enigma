@@ -33,4 +33,11 @@ class AlphabetTest < MiniTest::Test
     assert_equal 33, @punctuation.position
     assert_equal 107, @capitalize.position
   end
+
+  def test_it_can_shift
+    assert_equal 26, @alphabet.shift("26")
+    assert_equal 0, @space.shift("81")
+    assert_equal 5, @punctuation.shift("32")
+    assert_equal 26, @capitalize.shift("26")
+  end
 end
