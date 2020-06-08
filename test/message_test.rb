@@ -26,4 +26,9 @@ class MessageTest < Minitest::Test
     expected = "keder,sprrdx!"
     assert_equal expected, @message.encrypt({ A: 03, B: 27, C: 73, D: 20 })
   end
+
+  def test_it_can_decrypt
+    expected = "hello, world!"
+    assert_equal expected, @encrypted_message.decrypt({ A: 03, B: 27, C: 73, D: 20 })
+  end
 end
