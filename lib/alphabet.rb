@@ -8,4 +8,12 @@ class Alphabet
   def valid_alphabet
     ("a".."z").to_a.push(" ")
   end
+
+  def position
+    if @character == " "
+      (@character.ord + 91)
+    else
+      @character.ord
+    end
+  end
 end
