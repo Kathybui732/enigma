@@ -17,10 +17,10 @@ class AlphabetTest < MiniTest::Test
     assert_equal "k", @capitalize.character
     assert_equal true, @alphabet.character.downcase == @alphabet.character
     assert_equal true, @capitalize.character.downcase == @capitalize.character
-    expected = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " "]
-    assert_equal expected, @alphabet.valid_alphabet
-    assert_equal true, @space.valid_alphabet.include?(@space.character)
-    assert_equal false, @punctuation.valid_alphabet.include?(@punctuation.character)
-    assert_equal true, @capitalize.valid_alphabet.include?(@capitalize.character)
   end
+  # expected = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " "]
+  # assert_equal expected, @alphabet.valid_alphabet
+  # assert_equal true, @space.valid_alphabet.include?(@space.character)
+  # assert_equal false, @punctuation.valid_alphabet.include?(@punctuation.character)
+  # assert_equal true, @capitalize.valid_alphabet.include?(@capitalize.character)
 end
