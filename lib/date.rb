@@ -1,7 +1,9 @@
-class DateCode
+require "date"
+
+class DateCode < Date
   attr_reader :code
 
-  def initialize(code)
+  def initialize(code = DateCode.today.strftime("%d%m%y"))
     @code = code
   end
 
