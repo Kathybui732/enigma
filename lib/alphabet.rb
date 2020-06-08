@@ -24,4 +24,16 @@ class Alphabet
       amount.to_i
     end
   end
+
+  def encrypt(amount)
+    if !valid_alphabet.include?(@character)
+      @character
+    elsif position + shift(amount) == 123 || position + shift(amount) == 150
+      " "
+    elsif position + shift(amount) > 123
+      (position + shift(amount) - 27).chr
+    else
+      (position + shift(amount)).chr
+    end
+  end
 end
