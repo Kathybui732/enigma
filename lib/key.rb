@@ -6,10 +6,9 @@ class Key
   end
 
   def shift_keys
-    shift_keys = []
-    @code.chars.each_cons(2) do |pair|
-      shift_keys << pair.join.to_i
+    @code.chars.each_cons(2).reduce([]) do |acc, pair|
+      acc << pair.join.to_i
+      acc
     end
-    shift_keys
   end
 end

@@ -7,6 +7,7 @@ class KeyTest < Minitest::Test
 	end
 
   def test_it_exists_with_attributes
+    assert_instance_of Key, @key
 		assert_equal "02715", @key.code
 	end
 

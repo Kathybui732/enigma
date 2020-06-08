@@ -7,6 +7,7 @@ class DateCodeTest < Minitest::Test
   end
 
   def test_it_exists_with_attributes
+    assert_instance_of DateCode, @date_1
     assert_equal "040895", @date_1.code
   end
 
