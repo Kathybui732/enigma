@@ -36,4 +36,16 @@ class Alphabet
       (position + shift(amount)).chr
     end
   end
+
+  def decrypt(amount)
+    if !valid_alphabet.include?(@character)
+      @character
+    elsif position - shift(amount) == 123 || position - shift(amount) == 96
+      " "
+    elsif position - shift(amount) < 97
+      (position - shift(amount) + 27).chr
+    else
+      (position - shift(amount)).chr
+    end
+  end
 end
