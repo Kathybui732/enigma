@@ -38,7 +38,7 @@ class Enigma
     shift
   end
 
-  def encrypt(message, key=nil, date= nil)
+  def encrypt(message, key=nil, date=nil)
     message = Message.new(message)
     @key = key_object(key)
     @date = date_object(date)
