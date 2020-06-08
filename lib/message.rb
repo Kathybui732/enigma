@@ -29,4 +29,16 @@ class Message
     end
     encrypted_breakdown.flatten.join
   end
+
+  def decrypt(shift)
+    decrypted_breakdown = []
+    breakdown.each do |array|
+      a = array[0].decrypt(shift[:A]) unless array[0].nil?
+      b = array[1].decrypt(shift[:B]) unless array[1].nil?
+      c = array[2].decrypt(shift[:C]) unless array[2].nil?
+      d = array[3].decrypt(shift[:D]) unless array[3].nil?
+      decrypted_breakdown << [a, b, c, d].compact
+    end
+    decrypted_breakdown.flatten.join
+  end
 end
