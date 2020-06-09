@@ -105,6 +105,7 @@ class Decipher
   def compare_keys(current_keys, previous_key)
     current_keys.select do |number|
       number.end_with?(previous_key[0][0])
+      require "pry"; binding.pry
     end
   end
 
@@ -150,7 +151,10 @@ class Decipher
   def crack(message, date=nil)
     @message = message
     @date = date_object(date)
-
-    decrypt(message, mystery_key, @date)
+    {
+      decryption: decrypt(message, mystery_key, date)[:decryption],
+      date: decrypt(message, mystery_key, date)[:date],
+      key: decrypt(message, mystery_key, date)[:key]
+    }
   end
 end
