@@ -1,7 +1,7 @@
 require "date"
-require "./lib/decipher"
+require "./lib/christopher"
 
-class Enigma < Decipher
+class Enigma < Christopher
   attr_reader :key,
               :date
 

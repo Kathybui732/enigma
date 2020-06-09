@@ -1,13 +1,13 @@
 require_relative "./test_helper"
 
-class DecipherTest < Minitest::Test
+class ChristopherTest < Minitest::Test
 
   def setup
-    @decipher = Decipher.new
+    @decipher = Christopher.new
   end
 
   def test_it_exists_with_attributes
-    assert_instance_of Decipher, @decipher
+    assert_instance_of Christopher, @decipher
     assert_nil nil, @decipher.message
     assert_nil nil, @decipher.date
   end

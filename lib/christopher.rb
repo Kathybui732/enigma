@@ -1,4 +1,4 @@
-class Decipher
+class Christopher
   attr_reader :message,
               :date
 
@@ -105,7 +105,6 @@ class Decipher
   def compare_keys(current_keys, previous_key)
     current_keys.select do |number|
       number.end_with?(previous_key[0][0])
-      require "pry"; binding.pry
     end
   end
 
